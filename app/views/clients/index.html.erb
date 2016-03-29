@@ -1,0 +1,23 @@
+<h1>Listing Clients</h1>
+ 
+<table class="table table-striped">
+  <tr>
+    <th>First Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+ 
+<% @clients.each do |client| %>
+  <tr>
+    <td><%= client.first_name %></td>
+    <td><%= link_to "Show", client %></td>
+    <td><%= link_to "Edit", edit_client_path(client) %></td>
+    <td><%= link_to "Remove", client, method: :delete, data: { confirm: "Are you sure?" } %></td>
+  </tr>
+<% end %>
+</table>
+ 
+<br>
+ 
+<a href ="<%= new_client_path %>">NEW</a>

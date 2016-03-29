@@ -1,0 +1,13 @@
+<!-- <!DOCTYPE html>
+<%= form_for @client do |f| %>
+  <%= f.label :first_name,"First name" %>
+  <%= f.text_field :first_name %>
+  <button class="button" type="submit">Submit</button>
+
+  <%= f.file_field :avatar %>
+<% end %> -->
+<form accept-charset="UTF-8" action="/clients" method="post">
+	<lable> First name </lable>
+	<input type="text" name="client[first_name]" value="">
+  <button class="button" type="submit">Submit</button>
+</form>
