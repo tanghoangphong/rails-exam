@@ -8,6 +8,10 @@ Bundler.require(*Rails.groups)
 
 module TestQuery
   class Application < Rails::Application
+    config.i18n.default_locale = :en
+    config.i18n.load_path += Dir[Rails.root.join('my', 'locales','views','home', '*.{rb,yml}').to_s]
+    #config.middleware.use I18n::JS::Middleware
+    config.middleware.use I18n::JS::Middleware
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

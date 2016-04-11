@@ -1,8 +1,8 @@
 <h1>Listing Clients</h1>
- 
+ <%= paginate @clients %>
 <table class="table table-striped">
   <tr>
-    <th>First Name</th>
+    <th><%= t ".First Name" %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,7 +11,7 @@
 <% @clients.each do |client| %>
   <tr>
     <td><%= client.first_name %></td>
-    <td><%= link_to "Show", client %></td>
+    <td><%= link_to t(".Show"), client %></td>
     <td><%= link_to "Edit", edit_client_path(client) %></td>
     <td><%= link_to "Remove", client, method: :delete, data: { confirm: "Are you sure?" } %></td>
   </tr>
@@ -21,3 +21,17 @@
 <br>
  
 <a href ="<%= new_client_path %>">NEW</a>
+<button>Click me</button>
+<%= link_to "Eng",:locale => "en"%>
+<%= link_to "Pirate", :locale => "pirate" %>
+<%= t "hello_world" %><br>
+<%= t "Name", age: "18" %><br>
+<%= pluralize(2,'person') %><br>
+<%= I18n.translate :users, count: 2 %>
+<script>
+  $('button').click(function(){
+    alert(I18n.translate("Thong bao"));
+  });
+</script>
+
+

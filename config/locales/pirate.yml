@@ -1,0 +1,16 @@
+pirate:
+  hello_world: Ahoy World
+  hello_flash: Ahoy Flash
+  greet_username: "Ahoy, %{user}!"
+  time:
+    formats:
+      short: "overrr %H hours hihi"
+  clients:
+    index:
+      First Name: "Ten Client"
+      Show: "Hien"
+    edit:
+      Show: "hieeen"
+  Name: "i am %{age} age"
+  ahihihi: "asdasd"
+  Thong bao: "bao bao"

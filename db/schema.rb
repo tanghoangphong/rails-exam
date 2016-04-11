@@ -11,22 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160325021644) do
+ActiveRecord::Schema.define(version: 20160411080600) do
 
-  create_table "addresses", force: true do |t|
+  create_table "addresses", force: :cascade do |t|
     t.integer  "client_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "street",     limit: 255
   end
 
-  create_table "clients", force: true do |t|
-    t.string   "first_name"
+  create_table "clients", force: :cascade do |t|
+    t.string   "first_name",          limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "orders_count"
+    t.string   "email",               limit: 255
+    t.datetime "birthday"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
-  create_table "clients_roles", id: false, force: true do |t|
+  create_table "clients_roles", id: false, force: :cascade do |t|
     t.integer "client_id"
     t.integer "role_id"
   end
@@ -34,25 +41,63 @@ ActiveRecord::Schema.define(version: 20160325021644) do
   add_index "clients_roles", ["client_id"], name: "index_clients_roles_on_client_id"
   add_index "clients_roles", ["role_id"], name: "index_clients_roles_on_role_id"
 
-  create_table "movies", force: true do |t|
-    t.string   "title"
-    t.string   "director"
-    t.text     "storyline"
-    t.date     "watched_on"
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "orders", force: true do |t|
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+
+  create_table "movies", force: :cascade do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title",      limit: 255
+    t.string   "director",   limit: 255
+    t.string   "storyline",  limit: 255
+    t.datetime "watched_on"
+  end
+
+  create_table "orders", force: :cascade do |t|
     t.integer  "client_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
+    t.string   "name",       limit: 255
   end
 
-  create_table "roles", force: true do |t|
+  create_table "roles", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

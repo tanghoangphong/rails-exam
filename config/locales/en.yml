@@ -20,4 +20,30 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  hello_world: Hello world!
+  hello_flash: Hello flash!
+  greet_username: "%{message}, %{user}!"
+  Name: "i am %{age} "
+  users:
+    zero: "no kids"
+    one: "1 kid"
+    other: "%{count} kids"
+  message: "a"
+  akatsuki: "asd"
+  Thong bao: "Warning"
+  views:
+    pagination:
+      first: "&laquo; "
+      last: " &raquo;"
+      previous: "&lsaquo; Prev"
+      next: "Next &rsaquo;"
+      truncate: "&hellip;"
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "No %{entry_name} found"
+          one: "Displaying <b>1</b> %{entry_name}"
+          other: "Displaying <b>all %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "Displaying %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> of <b>%{total}</b> in total"
